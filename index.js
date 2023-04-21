@@ -5,9 +5,12 @@ const port = process.env.PORT || 5000;
 
 require('dotenv').config()
 
+// internal import
+const userRouter = require('./routes/user.route')
 
 
 
+app.use('/user', userRouter)
 
 
 
