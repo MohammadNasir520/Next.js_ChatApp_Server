@@ -4,20 +4,20 @@ const userSchema = mongoose.Schema(
     {
         name: {
             type: String,
-            require: true
+            // require: true
         },
         email: {
             type: String,
-            require: true,
+            // require: true,
             unique: true,
         },
         password: {
             type: String,
-            require: true,
+            // require: true,
         },
         confirmPassword: {
             type: String,
-            require: true,
+            // require: true,
         },
         image: {
             type: String
@@ -25,4 +25,4 @@ const userSchema = mongoose.Schema(
     }
 )
 
-module.exports = mongoose.model('users', userSchema)
+module.exports = mongoose.model("users", userSchema)

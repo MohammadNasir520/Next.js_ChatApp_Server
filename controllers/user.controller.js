@@ -4,10 +4,21 @@ const user = require('../models/user.model')
 
 module.exports.signUp = async (req, res) => {
 
-    const newUser = new user({ name: 'nasir', email: 'nasir@gmail.com' })
+    try {
 
-    const savedUser = await newUser.save()
-    res.cookie('token', 'set token')
-    console.log('user controller')
-    res.send('user again hit')
+        const newUser = new user(req.body)
+        const savedUser = await newUser.save()
+        res.send(savedUser)
+
+    } catch (error) {
+        console.log(error)
+
+    }
 }
+
+module.exports.getUsers = async (req, res) => {
+
+    console.log('user get controller')
+    const users = await user.find()
+    res.send(users)
+} 
