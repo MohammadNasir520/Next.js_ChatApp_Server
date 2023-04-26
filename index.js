@@ -1,9 +1,9 @@
-const express = require('express')
-const app = express()
-const mongoose = require('mongoose')
+const express = require('express');
+const app = express();
+const mongoose = require('mongoose');
 const port = process.env.PORT || 5000;
-
-require('dotenv').config()
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 
 // middle ware
@@ -23,8 +23,8 @@ const database = module.exports = () => {
         useUnifiedTopology: true,
     }
 
-
     try {
+        // mongoose.connect(`mongodb://localhost:27017/NextJsChatApp`, connectionParams)
         mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.c5dej4c.mongodb.net/nextChatApp?retryWrites=true&w=majority`, connectionParams)
             .then(console.log('database connected successfully'))
             .catch(error => { console.log(error) })
@@ -36,15 +36,8 @@ const database = module.exports = () => {
 }
 database()
 
-
-
-
+// use imported router
 app.use('/user', userRouter)
-
-
-
-
-
 
 
 
