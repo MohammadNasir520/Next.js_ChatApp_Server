@@ -2,6 +2,7 @@ const express = require('express')
 const userControllers = require('../controllers/user.controller')
 const router = express.Router()
 
+router.route('/signUp').post(userControllers.signUp);
 router.route('/')
 
   /**
@@ -38,6 +39,6 @@ router.route('/')
    
   */
 
-  .post(userControllers.signUp)
+  .post()
 
 module.exports = router
