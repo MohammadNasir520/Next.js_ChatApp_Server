@@ -1,8 +1,9 @@
 const express = require('express')
-const userControllers = require('../controllers/user.controller')
+const userControllers = require('../../controllers/user.controller')
 const router = express.Router()
 
-router.route('/signUps').post(userControllers.signUp);
+router.route('/signup').post(userControllers.signUp);
+router.route('/login').post(userControllers.login);
 router.route('/')
 
   /***
@@ -21,7 +22,7 @@ router.route('/')
     * @apiError (Forbidden 403)     Forbidden     Only admins can access the data
     */
 
-  .get(userControllers.getUsers)
+  .get(userControllers.getAllUser)
 
   /**
   * @api {get} /user  save a user

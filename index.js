@@ -12,7 +12,7 @@ app.use(express.json())
 
 
 // internal import
-const userRouter = require('./routes/user.route');
+const userRouter = require('./routes/v1/user.route');
 // const { database } = require('./utils/dbConnection');
 
 
@@ -27,9 +27,6 @@ const database = module.exports = () => {
         // mongoose.connect(`mongodb://localhost:27017/NextJsChatApp`, connectionParams)
         mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.c5dej4c.mongodb.net/nextChatApp?retryWrites=true&w=majority`, connectionParams)
             .then(console.log('database connected successfully'))
-            .catch(error => { console.log(error) })
-
-
     } catch (error) {
         console.log(error)
     }
@@ -37,7 +34,7 @@ const database = module.exports = () => {
 database()
 
 // use imported router
-app.use('/user', userRouter)
+app.use('/api/user', userRouter)
 
 
 
