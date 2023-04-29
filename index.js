@@ -34,13 +34,24 @@ const database = module.exports = () => {
 database()
 
 // use imported router
-app.use('/api/user', userRouter)
+app.use('/api/v1/user', userRouter)
 
 
 
 app.get('/', async (req, res) => {
     res.send('Next.js Chat app server is running')
 })
+
+app.all("*", (req, res) => {
+    res.send("NO route found.");
+});
+
+process.on("unhandledRejection", (error) => {
+    console.log(error.name, error.message);
+    app.close(() => {
+        process.exit(1);
+    })
+});
 
 app.listen(port, () => {
     console.log(`server is running on port ${port}`)
