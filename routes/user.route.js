@@ -2,10 +2,10 @@ const express = require('express')
 const userControllers = require('../controllers/user.controller')
 const router = express.Router()
 
-router.route('/signUp').post(userControllers.signUp);
+router.route('/signUps').post(userControllers.signUp);
 router.route('/')
 
-  /**
+  /***
     * @api {get} /tools All tools
     * @apiDescription Get all the tools
     * @apiPermission admin
